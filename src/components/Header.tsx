@@ -1,0 +1,45 @@
+import { RxHamburgerMenu } from "react-icons/rx";
+import { Link } from "react-router";
+import { IoSearch } from "react-icons/io5";
+import { CgShoppingCart } from "react-icons/cg";
+import { FaRegUserCircle } from "react-icons/fa";
+
+function Header() {
+  return (
+    <header className="flex py-5 px-4">
+      <button className="mr-4 xl:hidden">
+        <RxHamburgerMenu className="w-6 h-6" />
+      </button>
+      <div className="flex justify-between w-full font-poppins items-center">
+        <Link className="text-[25px] font-semibold" to="home">
+          F'Boutique
+        </Link>
+        <nav className="hidden xl:block">
+          <ul className="flex">
+            <li>Shop</li>
+            <li>On Sale</li>
+            <li>New Arrivals</li>
+            <li>Brands</li>
+          </ul>
+        </nav>
+        <div className="flex gap-3">
+          <input
+            className="hidden xl:block border-2 border-solid border-black "
+            type="text"
+          />
+          <button className="xl:hidden">
+            <IoSearch className="w-6 h-6" />
+          </button>
+          <button>
+            <CgShoppingCart className="w-6 h-6" />
+          </button>
+          <button>
+            <FaRegUserCircle className="w-6 h-6" />
+          </button>
+        </div>
+      </div>
+    </header>
+  );
+}
+
+export default Header;
