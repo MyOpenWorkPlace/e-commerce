@@ -6,8 +6,9 @@ function Routing() {
   return (
     <>
       <Routes>
+        <Route path="/*" element={<div>такой ссылки нету</div>}></Route>
         <Route path="/" element={<Layout />}>
-          <Route path="home" element={<Home />} />
+          <Route index element={<Home />} />
         </Route>
       </Routes>
     </>

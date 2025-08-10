@@ -4,7 +4,7 @@ import Footer from "./Footer";
 
 function Layout() {
   return (
-    <div className="w-[390px] mx-auto my-0 grid xl:w-[1240px]">
+    <div className="w-[390px] mx-auto my-0 font-satoshi grid xl:w-[1240px]">
       <Header />
       <Outlet />
       <Footer />

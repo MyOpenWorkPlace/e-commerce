@@ -10,8 +10,8 @@ function Header() {
       <button className="mr-4 xl:hidden">
         <RxHamburgerMenu className="w-6 h-6" />
       </button>
-      <div className="flex justify-between w-full font-poppins items-center">
-        <Link className="text-[25px] font-semibold" to="home">
+      <div className="flex justify-between w-full items-center">
+        <Link className="text-[25px] font-integral font-semibold" to="home">
           F'Boutique
         </Link>
         <nav className="hidden xl:block">
