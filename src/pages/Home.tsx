@@ -6,7 +6,7 @@ import Loader from "../components/Loader";
 
 function Home() {
   const dispatch = useAppDispatch();
-  const { list, loading, error } = useAppSelector((s) => s.clothes);
+  const { list, loading } = useAppSelector((s) => s.clothes);
 
   useEffect(() => {
     const promise = dispatch(fetchClothes());
@@ -48,7 +48,15 @@ function Home() {
               </div>
               <img src={models} alt="" />
             </div>
-            <div></div>
+            <ul className="bg-black py-10 px-4 gap-y-5 text-2xl text-white grid grid-cols-3 justify-items-center">
+              <li>VERSACE</li>
+              <li className="italic font-serif">ZARA</li>
+              <li className="font-serif">GUCCI</li>
+              <div className="flex col-span-3 gap-8 ">
+                <li className="font-black">PRADA</li>
+                <li className="font-thin">Calvin Klein</li>
+              </div>
+            </ul>
           </section>
           <section>{list.map((el) => el.title + "... ")}</section>
         </main>

@@ -1,13 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-
-interface Clothes {
-  id: number;
-  name: string;
-  email: string;
-}
+import type { Clothes } from "../../types/types";
 
 type ClothesState = { list: Clothes[]; loading: boolean; error: {} | null };
+
+const initialState: ClothesState = { list: [], loading: false, error: null };
 
 export const fetchClothes = createAsyncThunk(
   "clothes/fetchClothes",
@@ -23,9 +20,7 @@ export const fetchClothes = createAsyncThunk(
   }
 );
 
-const initialState: ClothesState = { list: [], loading: false, error: null };
-
-const usersSlice = createSlice({
+const slice = createSlice({
   name: "clothes",
   initialState,
   reducers: {},
@@ -46,4 +41,4 @@ const usersSlice = createSlice({
   },
 });
 
-export const clothesReducer = usersSlice.reducer;
+export default slice.reducer;

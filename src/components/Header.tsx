@@ -11,7 +11,7 @@ function Header() {
         <RxHamburgerMenu className="w-6 h-6" />
       </button>
       <div className="flex justify-between w-full items-center">
-        <Link className="text-[25px] font-integral font-semibold" to="home">
+        <Link className="text-[25px] font-integral font-semibold" to="/">
           F'Boutique
         </Link>
         <nav className="hidden xl:block">
