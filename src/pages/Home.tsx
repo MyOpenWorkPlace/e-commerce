@@ -1,67 +1,55 @@
 import models from "../assets/images/models.png";
-import { fetchClothes } from "../redux/slices/clothesSlice";
-import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../redux/reduxHooks/reduxHooks";
-import Loader from "../components/Loader";
+
+import SomeClothes from "../components/SomeClothes";
 
 function Home() {
-  const dispatch = useAppDispatch();
-  const { list, loading } = useAppSelector((s) => s.clothes);
-
-  useEffect(() => {
-    const promise = dispatch(fetchClothes());
-    return () => promise.abort();
-  }, [dispatch]);
-
   return (
-    <>
-      {(loading && <Loader />) || (
-        <main>
-          <section className="bg-custom-gray">
-            <div>
-              <div className="grid gap-5 px-4 pt-10">
-                <h1 className="text-4xl font-integral font-semibold">
-                  FIND CLOTHES THAT MATCHES YOUR STYLE
-                </h1>
-                <p className="text-sm ">
-                  Browse through our diverse range of meticulously crafted
-                  garments, designed to bring out your individuality and cater
-                  to your sense of style.
-                </p>
-                <button className="bg-black text-white p-4 rounded-full">
-                  Shop Now
-                </button>
-                <ul className="grid grid-cols-2 justify-items-center  gap-y-3">
-                  <li>
-                    <h3 className="text-2xl font-normal">200+</h3>
-                    <p className="text-xs">International Brands</p>
-                  </li>
-                  <li>
-                    <h3 className="text-2xl font-normal">2,000+</h3>
-                    <p className="text-xs">High-Quality Products</p>
-                  </li>
-                  <li className="col-span-2">
-                    <h3 className="text-2xl font-normal">30,000+</h3>
-                    <p className="text-xs">Happy Customers</p>
-                  </li>
-                </ul>
-              </div>
-              <img src={models} alt="" />
-            </div>
-            <ul className="bg-black py-10 px-4 gap-y-5 text-2xl text-white grid grid-cols-3 justify-items-center">
-              <li>VERSACE</li>
-              <li className="italic font-serif">ZARA</li>
-              <li className="font-serif">GUCCI</li>
-              <div className="flex col-span-3 gap-8 ">
-                <li className="font-black">PRADA</li>
-                <li className="font-thin">Calvin Klein</li>
-              </div>
+    <main>
+      <section className="bg-custom-gray">
+        <div>
+          <div className="grid gap-5 px-4 pt-10">
+            <h1 className="text-4xl font-integral font-semibold">
+              FIND CLOTHES THAT MATCHES YOUR STYLE
+            </h1>
+            <p className="text-sm ">
+              Browse through our diverse range of meticulously crafted garments,
+              designed to bring out your individuality and cater to your sense
+              of style.
+            </p>
+            <button className="bg-black text-white p-4 rounded-full">
+              Shop Now
+            </button>
+            <ul className="grid grid-cols-2 justify-items-center  gap-y-3">
+              <li>
+                <h3 className="text-2xl font-normal">200+</h3>
+                <p className="text-xs">International Brands</p>
+              </li>
+              <li>
+                <h3 className="text-2xl font-normal">2,000+</h3>
+                <p className="text-xs">High-Quality Products</p>
+              </li>
+              <li className="col-span-2">
+                <h3 className="text-2xl font-normal">30,000+</h3>
+                <p className="text-xs">Happy Customers</p>
+              </li>
             </ul>
-          </section>
-          <section>{list.map((el) => el.title + "... ")}</section>
-        </main>
-      )}
-    </>
+          </div>
+          <div className=" overflow-hidden">
+            <img className="h-112 object-cover object-[89%] " src={models} />
+          </div>
+        </div>
+        <ul className="bg-black py-10 px-4 gap-y-5 text-2xl text-white grid grid-cols-3 justify-items-center">
+          <li>VERSACE</li>
+          <li className="italic font-serif">ZARA</li>
+          <li className="font-serif">GUCCI</li>
+          <div className="flex col-span-3 gap-8 ">
+            <li className="font-black">PRADA</li>
+            <li className="font-thin">Calvin Klein</li>
+          </div>
+        </ul>
+      </section>
+      <section>{<SomeClothes />}</section>
+    </main>
   );
 }
 
