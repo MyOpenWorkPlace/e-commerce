@@ -3,9 +3,15 @@
 
 @import "tailwindcss";
 
+@plugin 'tailwind-scrollbar';
+
 @theme {
   --font-integral: "Integral CF", sans-serif;
   --font-satoshi: "Satoshi", sans-serif;
 
   --color-custom-gray: rgba(242, 240, 241, 1);
+}
+
+svg {
+  display: inline-block;
 }

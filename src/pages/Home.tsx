@@ -1,8 +1,11 @@
+import { useNavigate } from "react-router";
 import models from "../assets/images/models.png";
-
 import SomeClothes from "../components/SomeClothes";
+import Reviews from "../components/Reviews";
 
 function Home() {
+  const navigate = useNavigate();
+
   return (
     <main>
       <section className="bg-custom-gray">
@@ -16,7 +19,12 @@ function Home() {
               designed to bring out your individuality and cater to your sense
               of style.
             </p>
-            <button className="bg-black text-white p-4 rounded-full">
+            <button
+              onClick={() => {
+                navigate("/category");
+              }}
+              className="bg-black text-white p-4 rounded-full"
+            >
               Shop Now
             </button>
             <ul className="grid grid-cols-2 justify-items-center  gap-y-3">
@@ -48,7 +56,11 @@ function Home() {
           </div>
         </ul>
       </section>
-      <section>{<SomeClothes />}</section>
+      <section className="grid justify-center ">
+        {<SomeClothes sectionName="NEW ARRIVALS" />}
+      </section>
+
+      <section className="grid">{<Reviews />}</section>
     </main>
   );
 }
