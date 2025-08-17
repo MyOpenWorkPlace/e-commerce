@@ -3,8 +3,6 @@
 
 @import "tailwindcss";
 
-@plugin 'tailwind-scrollbar';
-
 @theme {
   --font-integral: "Integral CF", sans-serif;
   --font-satoshi: "Satoshi", sans-serif;
