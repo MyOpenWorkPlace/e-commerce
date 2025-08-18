@@ -21,7 +21,7 @@ function Home() {
             </p>
             <button
               onClick={() => {
-                navigate("/category");
+                navigate("/clothes");
               }}
               className="bg-black text-white p-4 rounded-full"
             >
@@ -60,7 +60,7 @@ function Home() {
         {<SomeClothes sectionName="NEW ARRIVALS" />}
       </section>
 
-      <section className="grid">{<Reviews />}</section>
+      <section>{<Reviews />}</section>
     </main>
   );
 }

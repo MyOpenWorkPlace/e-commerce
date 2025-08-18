@@ -15,14 +15,14 @@ function Reviews() {
   console.log(reviewsArr);
 
   const scrollLeft = () => {
-    containerRef.current?.scrollBy({ left: -416, behavior: "smooth" });
+    containerRef.current?.scrollBy({ left: -406, behavior: "smooth" });
   };
   const scrollRight = () => {
-    containerRef.current?.scrollBy({ left: 416, behavior: "smooth" });
+    containerRef.current?.scrollBy({ left: 406, behavior: "smooth" });
   };
 
   return (
-    <div className="grid justify-items-center gap-8">
+    <div className="grid justify-items-center gap-6">
       <div className="flex items-end">
         <h2 className="font-integral text-3xl">OUR HAPPY CUSTOMERS</h2>
         <div className="flex text-6xl">
@@ -30,7 +30,7 @@ function Reviews() {
           <button onClick={scrollRight}>→</button>
         </div>
       </div>
-      <ul ref={containerRef} className="flex gap-4 w-100 overflow-hidden">
+      <ul ref={containerRef} className="flex gap-4 w-full overflow-hidden">
         {reviewsArr.map((review, i) => (
           <li key={i} className="grid gap-2  w-full shrink-0">
             <div className="grid border-2 border-gray-200 p-6 rounded-2xl ">
