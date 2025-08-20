@@ -1,14 +1,16 @@
 import { useParams } from "react-router";
-import { useAppSelector } from "../redux/reduxHooks/reduxHooks";
+import { useAppDispatch, useAppSelector } from "../redux/reduxHooks/reduxHooks";
 import { type ReactImageGalleryItem } from "react-image-gallery";
 import Gallery from "../components/customGallery/Gallery";
 import { Rating } from "react-simple-star-rating";
 import { useState } from "react";
 import { FaPlus, FaMinus } from "react-icons/fa6";
+import { addToCart } from "../redux/slices/authSlice";
 
 function ClothInfo() {
   const { list } = useAppSelector((store) => store.clothes);
   const { id } = useParams();
+  const dispatch = useAppDispatch();
 
   const [amount, setAmount] = useState(1);
 
@@ -66,7 +68,12 @@ function ClothInfo() {
           </button>
         </div>
 
-        <button className="flex-1 text-white bg-black rounded-full">
+        <button
+          onClick={() => {
+            dispatch(addToCart({ id: id, amount: amount }));
+          }}
+          className="flex-1 text-white bg-black rounded-full"
+        >
           Add to Cart
         </button>
       </div>

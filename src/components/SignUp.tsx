@@ -35,7 +35,11 @@ function SignUp() {
             toast.error("!!! User already exists !!!");
           } else {
             dispatch(
-              signUp({ email: values.email, password: values.password })
+              signUp({
+                email: values.email,
+                password: values.password,
+                cart: [],
+              })
             );
             dispatch(login({ email: values.email, password: values.password }));
           }
