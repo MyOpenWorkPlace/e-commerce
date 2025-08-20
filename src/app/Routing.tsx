@@ -1,7 +1,7 @@
 import { Navigate, Route, Routes } from "react-router";
 import Home from "../pages/Home";
 import Layout from "../components/Layout";
-import Clothes from "../pages/Clothes";
+import Shop from "../pages/Shop";
 import ClothInfo from "../pages/ClothInfo";
 
 function Routing() {
@@ -10,8 +10,8 @@ function Routing() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="clothes" element={<Clothes />} />
-          <Route path="clothes/:id" element={<ClothInfo />} />
+          <Route path="shop" element={<Shop />} />
+          <Route path="shop/:id" element={<ClothInfo />} />
           <Route path="/*" element={<div>такого раздела нету</div>}></Route>
         </Route>
       </Routes>

@@ -1,9 +1,9 @@
 import { useAppSelector } from "../redux/reduxHooks/reduxHooks";
 
-function Clothes() {
+function Shop() {
   const { list, loading } = useAppSelector((store) => store.clothes);
 
   return <div>{list.map((el) => el.title + "... ")}</div>;
 }
 
-export default Clothes;
+export default Shop;

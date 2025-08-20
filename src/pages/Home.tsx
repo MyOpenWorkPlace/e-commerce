@@ -2,9 +2,12 @@ import { useNavigate } from "react-router";
 import models from "../assets/images/models.png";
 import SomeClothes from "../components/SomeClothes";
 import Reviews from "../components/Reviews";
+import { auth } from "../firebase/firebase";
 
 function Home() {
   const navigate = useNavigate();
+
+  console.log(auth);
 
   return (
     <main>
@@ -21,7 +24,7 @@ function Home() {
             </p>
             <button
               onClick={() => {
-                navigate("/clothes");
+                navigate("/shop");
               }}
               className="bg-black text-white p-4 rounded-full"
             >

@@ -6,7 +6,7 @@ import { FaRegUserCircle } from "react-icons/fa";
 
 function Header() {
   return (
-    <header className="flex py-5 px-4">
+    <header className="flex py-5 px-4 border-b-2 border-custom-gray">
       <button className="mr-4 xl:hidden">
         <RxHamburgerMenu className="w-6 h-6" />
       </button>

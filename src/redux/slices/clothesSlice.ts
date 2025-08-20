@@ -4,7 +4,7 @@ import type { Clothes } from "../../types/types";
 
 type ClothesState = { list: Clothes[]; loading: boolean; error: {} | null };
 
-const initialState: ClothesState = { list: [], loading: false, error: null };
+const initialState: ClothesState = { list: [], loading: true, error: null };
 
 export const fetchClothes = createAsyncThunk(
   "clothes/fetchClothes",
@@ -31,12 +31,12 @@ const slice = createSlice({
         state.error = null;
       })
       .addCase(fetchClothes.fulfilled, (state, action) => {
-        state.loading = false;
         state.list = action.payload;
+        state.loading = false;
       })
       .addCase(fetchClothes.rejected, (state, action) => {
-        state.loading = false;
         state.error = action.payload ?? "Unexpected error";
+        state.loading = false;
       });
   },
 });

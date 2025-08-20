@@ -52,28 +52,28 @@ function FooterNavigate() {
         <li>
           <h3 className="text-sm font-medium mb-3">HELP</h3>
           <ul className="grid gap-2 text-gray-500">
-            <li>About</li>
-            <li>Features</li>
-            <li>Works</li>
-            <li>Career</li>
+            <li>Customer Support</li>
+            <li>Delivery Details</li>
+            <li>Terms & Conditions</li>
+            <li>Privacy Policy</li>
           </ul>
         </li>
         <li>
           <h3 className="text-sm font-medium mb-3">FAQ</h3>
           <ul className="grid gap-2 text-gray-500">
-            <li>About</li>
-            <li>Features</li>
-            <li>Works</li>
-            <li>Career</li>
+            <li>Account</li>
+            <li>Manage Deliveries</li>
+            <li>Orders</li>
+            <li>Payment</li>
           </ul>
         </li>
         <li>
           <h3 className="text-sm font-medium mb-3">RESOURCES</h3>
           <ul className="grid gap-2 text-gray-500">
-            <li>About</li>
-            <li>Features</li>
-            <li>Works</li>
-            <li>Career</li>
+            <li>Free eBook</li>
+            <li>Development Tutorial</li>
+            <li>How to - Blog</li>
+            <li>Youtube Playlist</li>
           </ul>
         </li>
       </ul>

@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { useAppSelector } from "../redux/reduxHooks/reduxHooks";
+import { FaArrowRight, FaArrowLeft } from "react-icons/fa6";
 
 import { Rating } from "react-simple-star-rating";
 
@@ -25,9 +26,13 @@ function Reviews() {
     <div className="grid justify-items-center gap-6">
       <div className="flex items-end">
         <h2 className="font-integral text-3xl">OUR HAPPY CUSTOMERS</h2>
-        <div className="flex text-6xl">
-          <button onClick={scrollLeft}>←</button>
-          <button onClick={scrollRight}>→</button>
+        <div className="flex text-4xl gap-4">
+          <button onClick={scrollLeft}>
+            <FaArrowLeft />
+          </button>
+          <button onClick={scrollRight}>
+            <FaArrowRight />
+          </button>
         </div>
       </div>
       <ul ref={containerRef} className="flex gap-4 w-full overflow-hidden">
