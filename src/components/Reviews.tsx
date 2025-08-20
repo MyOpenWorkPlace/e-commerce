@@ -13,7 +13,6 @@ function Reviews() {
     .map(({ reviews }) => reviews)
     .flat()
     .filter(({ rating }) => rating === 5);
-  console.log(reviewsArr);
 
   const scrollLeft = () => {
     containerRef.current?.scrollBy({ left: -406, behavior: "smooth" });

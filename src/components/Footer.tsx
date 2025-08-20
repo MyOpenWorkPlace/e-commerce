@@ -10,7 +10,7 @@ const emailSchema = Yup.object().shape({
 
 function Footer() {
   return (
-    <footer className="mt-40 bg-custom-gray relative pt-58 px-4 pb-5">
+    <footer className="mt-35 bg-custom-gray relative pt-58 px-4 pb-5">
       <ToastContainer
         position="top-center"
         autoClose={3000}

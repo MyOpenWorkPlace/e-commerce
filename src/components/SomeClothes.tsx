@@ -11,7 +11,6 @@ function SomeClothes({ sectionName }: Props) {
   const navigate = useNavigate();
 
   const someClothesArr = [...list].sort(() => Math.random() - 0.5).slice(0, 4);
-  console.log(someClothesArr);
 
   return (
     <div className="grid justify-items-center xl:w-[1240px] py-12 gap-8">

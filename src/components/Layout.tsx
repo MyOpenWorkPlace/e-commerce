@@ -11,6 +11,8 @@ function Layout() {
   const { loading } = useAppSelector((store) => store.clothes);
 
   useEffect(() => {
+    !localStorage.getItem("users") &&
+      localStorage.setItem("users", JSON.stringify([]));
     const promise = dispatch(fetchClothes());
     return () => promise.abort();
   }, [dispatch]);

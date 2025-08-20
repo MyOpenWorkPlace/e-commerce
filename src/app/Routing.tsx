@@ -1,8 +1,11 @@
-import { Navigate, Route, Routes } from "react-router";
+import { Route, Routes } from "react-router";
 import Home from "../pages/Home";
 import Layout from "../components/Layout";
 import Shop from "../pages/Shop";
 import ClothInfo from "../pages/ClothInfo";
+import Auth from "../pages/Auth";
+import SignUp from "../components/SignUp";
+import LogIn from "../components/LogIn";
 
 function Routing() {
   return (
@@ -12,6 +15,10 @@ function Routing() {
           <Route index element={<Home />} />
           <Route path="shop" element={<Shop />} />
           <Route path="shop/:id" element={<ClothInfo />} />
+          <Route path="auth" element={<Auth />}>
+            <Route path="signUp" element={<SignUp />} />
+            <Route path="logIn" element={<LogIn />} />
+          </Route>
           <Route path="/*" element={<div>такого раздела нету</div>}></Route>
         </Route>
       </Routes>

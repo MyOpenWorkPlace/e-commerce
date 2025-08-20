@@ -1,10 +1,12 @@
 import { RxHamburgerMenu } from "react-icons/rx";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { IoSearch } from "react-icons/io5";
 import { CgShoppingCart } from "react-icons/cg";
 import { FaRegUserCircle } from "react-icons/fa";
 
 function Header() {
+  const navigate = useNavigate();
+
   return (
     <header className="flex py-5 px-4 border-b-2 border-custom-gray">
       <button className="mr-4 xl:hidden">
@@ -33,7 +35,11 @@ function Header() {
           <button>
             <CgShoppingCart className="w-6 h-6" />
           </button>
-          <button>
+          <button
+            onClick={() => {
+              navigate("/auth");
+            }}
+          >
             <FaRegUserCircle className="w-6 h-6" />
           </button>
         </div>
