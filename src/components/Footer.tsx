@@ -5,7 +5,10 @@ import { ToastContainer, toast } from "react-toastify";
 import FooterNavigate from "./FooterNavigate";
 
 const emailSchema = Yup.object().shape({
-  email: Yup.string().email("Invalid email").required("Required"),
+  email: Yup.string()
+    .email("Invalid email")
+    .matches(/@(gmail\.com|mail\.ru)$/, "Email must be @gmail.com or @mail.ru")
+    .required("Required"),
 });
 
 function Footer() {

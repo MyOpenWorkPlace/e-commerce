@@ -70,7 +70,8 @@ function ClothInfo() {
 
         <button
           onClick={() => {
-            dispatch(addToCart({ id: id, amount: amount }));
+            // dispatch(addToCart({ id: id, amount: amount }));
+            dispatch(addToCart({ ...cloth, amount: amount }));
           }}
           className="flex-1 text-white bg-black rounded-full"
         >

@@ -1,9 +1,17 @@
+import Filters from "../components/Filters";
 import { useAppSelector } from "../redux/reduxHooks/reduxHooks";
 
 function Shop() {
-  const { list, loading } = useAppSelector((store) => store.clothes);
+  const { list } = useAppSelector((store) => store.clothes);
 
-  return <div>{list.map((el) => el.title + "... ")}</div>;
+  return (
+    <main>
+      <div className="my-5 text-gray-600 ">{`Home > Shop`}</div>
+      <section className="pt-7 ">
+        <Filters itemsPerPage={6} items={list} />
+      </section>
+    </main>
+  );
 }
 
 export default Shop;

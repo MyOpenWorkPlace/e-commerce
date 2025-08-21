@@ -1,10 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-
-type User = {
-  email: string;
-  password: string;
-  cart: { amount: number; id: number }[];
-};
+import type { User } from "../../types/types";
 
 type AuthState = {
   users: User[];
@@ -39,36 +34,51 @@ const slice = createSlice({
       localStorage.setItem("activeUser", "");
     },
 
-    ///////////////////////////////////////////////////////////
-
     addToCart: (state, action) => {
+      if (state.activeUser!.cart.find((el) => el.id === action.payload.id)) {
+        state.activeUser!.cart = state.activeUser!.cart.map((el) =>
+          el.id === action.payload.id
+            ? { ...el, amount: el.amount + action.payload.amount }
+            : el
+        );
+      } else {
+        state.activeUser!.cart.push(action.payload);
+      }
+
+      state.users = state.users.map((user) =>
+        user.id === state.activeUser?.id ? state.activeUser : user
+      );
+      localStorage.setItem("users", JSON.stringify(state.users));
+      localStorage.setItem("activeUser", JSON.stringify(state.activeUser));
+    },
+
+    removeToCart: (state, action) => {
+      state.activeUser!.cart = state.activeUser!.cart.filter(
+        (el) => +el.id !== +action.payload
+      );
+
+      state.users = state.users.map((user) =>
+        user.id === state.activeUser?.id ? state.activeUser : user
+      );
+
+      localStorage.setItem("users", JSON.stringify(state.users));
+      localStorage.setItem("activeUser", JSON.stringify(state.activeUser));
+    },
+
+    clearCart: (state) => {
       console.log("aaa");
 
-      state.users.map((user) => {
-        if (
-          user.email === state.activeUser?.email &&
-          !user.cart.find((el) => action.payload.id === el.id)
-        ) {
-          console.log(user.email);
-          console.log(state.activeUser?.email);
-          console.log(user.cart);
-
-          return { ...user, cart: user.cart.push(action.payload) };
-        } else {
-          return user;
-        }
-      });
+      state.activeUser!.cart = [];
+      state.users = state.users.map((user) =>
+        user.id === state.activeUser?.id ? state.activeUser : user
+      );
       localStorage.setItem("users", JSON.stringify(state.users));
-    },
-    removeToCart: (state) => {
-      state.activeUser = null;
-    },
-    clearCart: (state) => {
-      state.activeUser = null;
+      localStorage.setItem("activeUser", JSON.stringify(state.activeUser));
     },
   },
 });
 
-export const { signUp, login, logout, addToCart } = slice.actions;
+export const { signUp, login, logout, addToCart, removeToCart, clearCart } =
+  slice.actions;
 
 export default slice.reducer;

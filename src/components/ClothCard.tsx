@@ -14,11 +14,13 @@ function ClothCard({ cloth: { id, thumbnail, title, rating, price } }: Props) {
       onClick={() => {
         navigate(`/shop/${id}`);
       }}
-      className="grid gap-2 xl:max-w-1/4 w-[200px] shrink-0"
+      className="grid gap-2 xl:max-w-1/4 w-[180px] shrink-0  justify-self-center"
     >
-      <img className="bg-gray-100 rounded-3xl" src={thumbnail} />
       <div>
-        <h3 className="font-semibold">
+        <img className="bg-gray-100 rounded-3xl" src={thumbnail} />
+      </div>
+      <div className="overflow-hidden">
+        <h3 className="font-semibold text-nowrap w-fit ">
           {title.split(" ").slice(0, 3).join(" ")}
         </h3>
         <div className="flex gap-3">

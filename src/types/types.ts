@@ -15,4 +15,16 @@ export interface Clothes {
   }[];
   images: string[];
   thumbnail: string;
+  amount?: number;
 }
+
+export type User = {
+  id: number;
+  email: string;
+  password: string;
+  cart: Clothes[];
+};
+
+// interface CartItem extends Clothes {
+//   amount: number;
+// }

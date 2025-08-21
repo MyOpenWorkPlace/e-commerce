@@ -9,7 +9,13 @@ function SignUp() {
   const users = useAppSelector((store) => store.auth.users);
 
   const userSchema = Yup.object().shape({
-    email: Yup.string().email("Invalid email").required("Required"),
+    email: Yup.string()
+      .email("Invalid email")
+      .matches(
+        /@(gmail\.com|mail\.ru)$/,
+        "Email must be @gmail.com or @mail.ru"
+      )
+      .required("Required"),
     password: Yup.string().min(8).required("Required"),
   });
 
@@ -34,14 +40,14 @@ function SignUp() {
           if (users.find((user) => user.email === values.email)) {
             toast.error("!!! User already exists !!!");
           } else {
-            dispatch(
-              signUp({
-                email: values.email,
-                password: values.password,
-                cart: [],
-              })
-            );
-            dispatch(login({ email: values.email, password: values.password }));
+            const newUser = {
+              email: values.email,
+              password: values.password,
+              cart: [],
+              id: Date.now(),
+            };
+            dispatch(signUp(newUser));
+            dispatch(login(newUser));
           }
         }}
       >

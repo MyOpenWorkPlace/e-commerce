@@ -28,7 +28,12 @@ function LogIn() {
           if (user) {
             if (user.password === values.password) {
               dispatch(
-                login({ email: values.email, password: values.password })
+                login({
+                  email: values.email,
+                  password: values.password,
+                  cart: user.cart,
+                  id: user.id,
+                })
               );
             } else {
               toast.error("!!! Password incorrect !!!");

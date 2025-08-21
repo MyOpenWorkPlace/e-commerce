@@ -6,6 +6,7 @@ import ClothInfo from "../pages/ClothInfo";
 import Auth from "../pages/Auth";
 import SignUp from "../components/SignUp";
 import LogIn from "../components/LogIn";
+import Cart from "../pages/Cart";
 
 function Routing() {
   return (
@@ -15,6 +16,7 @@ function Routing() {
           <Route index element={<Home />} />
           <Route path="shop" element={<Shop />} />
           <Route path="shop/:id" element={<ClothInfo />} />
+          <Route path="cart" element={<Cart />} />
           <Route path="auth" element={<Auth />}>
             <Route path="signUp" element={<SignUp />} />
             <Route path="logIn" element={<LogIn />} />
