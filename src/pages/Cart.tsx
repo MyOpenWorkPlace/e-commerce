@@ -2,7 +2,8 @@ import { useNavigate } from "react-router";
 import { useAppDispatch, useAppSelector } from "../redux/reduxHooks/reduxHooks";
 import CartList from "../components/CartList";
 import { clearCart } from "../redux/slices/authSlice";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
+import CompactToastContainer from "../components/CompactToastContainer";
 
 function Cart() {
   const navigate = useNavigate();
@@ -12,18 +13,7 @@ function Cart() {
 
   return (
     <main className="p-4 pt-0">
-      <ToastContainer
-        position="top-center"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick={false}
-        rtl={false}
-        pauseOnFocusLoss={false}
-        draggable={false}
-        pauseOnHover={false}
-        theme="dark"
-      />
+      <CompactToastContainer />
       <div className="my-5 text-gray-600 ">{`Home > Cart`}</div>
       {(cartItems &&
         ((cartItems[0] && (
@@ -60,9 +50,10 @@ function Cart() {
         )) || (
           <div className="text-center text-2xl font-bold">Cart Is Empty</div>
         ))) || (
-        <div>
-          <p>You Must Log In</p>
+        <div className="grid gap-4 justify-center border-1 border-gray-400 p-3 rounded-2xl">
+          <p>You must Log In</p>
           <button
+            className="bg-black text-white p-2 rounded-2xl"
             onClick={() => {
               navigate("/auth/logIn");
             }}

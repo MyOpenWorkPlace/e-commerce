@@ -44,7 +44,7 @@ function Filters({
           </div>
         }
         onPageChange={handlePageClick}
-        pageRangeDisplayed={1}
+        pageRangeDisplayed={2}
         pageCount={pageCount}
         previousLabel={
           <div className="flex items-center gap-1">
