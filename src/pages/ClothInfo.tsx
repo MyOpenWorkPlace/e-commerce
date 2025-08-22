@@ -6,13 +6,15 @@ import { Rating } from "react-simple-star-rating";
 import { useState } from "react";
 import { FaPlus, FaMinus } from "react-icons/fa6";
 import { addToCart } from "../redux/slices/authSlice";
+import CompactToastContainer from "../components/CompactToastContainer";
+import { toast } from "react-toastify";
 
 function ClothInfo() {
-  const { list } = useAppSelector((store) => store.clothes);
   const { id } = useParams();
   const dispatch = useAppDispatch();
-
   const [amount, setAmount] = useState(1);
+  const { list } = useAppSelector((store) => store.clothes);
+  const activeUser = useAppSelector((store) => store.auth.activeUser);
 
   const cloth = list.find((cloth) => cloth.id === +id!)!;
 
@@ -25,6 +27,7 @@ function ClothInfo() {
 
   return (
     <main className="px-4 ">
+      <CompactToastContainer />
       <div className="my-5 text-gray-600 ">{`Home > Shop > ${
         cloth!.category.charAt(0).toUpperCase() +
         cloth!.category.slice(1).replace(/-/g, " ")
@@ -70,8 +73,11 @@ function ClothInfo() {
 
         <button
           onClick={() => {
-            // dispatch(addToCart({ id: id, amount: amount }));
-            dispatch(addToCart({ ...cloth, amount: amount }));
+            if (activeUser) {
+              dispatch(addToCart({ ...cloth, amount: amount }));
+            } else {
+              toast("You must Log In account");
+            }
           }}
           className="flex-1 text-white bg-black rounded-full"
         >

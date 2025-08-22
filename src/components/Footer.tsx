@@ -1,8 +1,9 @@
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { TfiEmail } from "react-icons/tfi";
 import * as Yup from "yup";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import FooterNavigate from "./FooterNavigate";
+import CompactToastContainer from "./CompactToastContainer";
 
 const emailSchema = Yup.object().shape({
   email: Yup.string()
@@ -14,18 +15,7 @@ const emailSchema = Yup.object().shape({
 function Footer() {
   return (
     <footer className="mt-35 bg-custom-gray relative pt-58 px-4 pb-5">
-      <ToastContainer
-        position="top-center"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick={false}
-        rtl={false}
-        pauseOnFocusLoss={false}
-        draggable={false}
-        pauseOnHover={false}
-        theme="dark"
-      />
+      <CompactToastContainer />
       <Formik
         initialValues={{ email: "" }}
         validationSchema={emailSchema}
