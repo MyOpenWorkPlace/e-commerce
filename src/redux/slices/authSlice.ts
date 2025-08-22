@@ -66,8 +66,6 @@ const slice = createSlice({
     },
 
     clearCart: (state) => {
-      console.log("aaa");
-
       state.activeUser!.cart = [];
       state.users = state.users.map((user) =>
         user.id === state.activeUser?.id ? state.activeUser : user

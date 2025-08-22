@@ -26,7 +26,7 @@ function SidebarNav({ setState }: { setState: Function }) {
           <img className="w-20 rounded-2xl ml-3" src={icon} alt="" />
           <MenuItem component={<Link to="" />}>Home</MenuItem>
           <MenuItem component={<Link to="shop" />}>Shop</MenuItem>
-          <MenuItem component={<Link to="/info" />}>Contacts</MenuItem>
+          <MenuItem component={<Link to="/contacts" />}>Contacts</MenuItem>
         </Menu>
       </Sidebar>
     </div>

@@ -1,15 +1,16 @@
-import { useParams } from "react-router";
+import { NavLink, Outlet, useNavigate, useParams } from "react-router";
 import { useAppDispatch, useAppSelector } from "../redux/reduxHooks/reduxHooks";
 import { type ReactImageGalleryItem } from "react-image-gallery";
 import Gallery from "../components/customGallery/Gallery";
 import { Rating } from "react-simple-star-rating";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaPlus, FaMinus } from "react-icons/fa6";
 import { addToCart } from "../redux/slices/authSlice";
 import CompactToastContainer from "../components/CompactToastContainer";
 import { toast } from "react-toastify";
 
 function ClothInfo() {
+  const navigate = useNavigate();
   const { id } = useParams();
   const dispatch = useAppDispatch();
   const [amount, setAmount] = useState(1);
@@ -17,13 +18,21 @@ function ClothInfo() {
   const activeUser = useAppSelector((store) => store.auth.activeUser);
 
   const cloth = list.find((cloth) => cloth.id === +id!)!;
-
   const { rating, title, price, description, images } = cloth;
 
   const imgsForGallery: ReactImageGalleryItem[] = images.map((img) => ({
     original: img,
     thumbnail: img,
   }))!;
+
+  const activeLink = ({ isActive }: { isActive: boolean }) =>
+    isActive
+      ? "text-black font-bold  border-b-1 border-black"
+      : "text-gray-700 font-bold";
+
+  useEffect(() => {
+    navigate("details");
+  }, []);
 
   return (
     <main className="px-4 ">
@@ -84,6 +93,15 @@ function ClothInfo() {
           Add to Cart
         </button>
       </div>
+      <div className="flex justify-center gap-10 border-b-1 border-gray-300">
+        <NavLink className={activeLink} to="details">
+          Product Details
+        </NavLink>
+        <NavLink className={activeLink} to="reviews">
+          Rating & Reviews
+        </NavLink>
+      </div>
+      <Outlet />
     </main>
   );
 }

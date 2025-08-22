@@ -12,6 +12,7 @@ export interface Clothes {
     comment: string;
     reviewerName: string;
     reviewerEmail: string;
+    date: string;
   }[];
   images: string[];
   thumbnail: string;

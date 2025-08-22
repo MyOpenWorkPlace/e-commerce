@@ -5,7 +5,7 @@ import github from "../assets/icons/github.svg";
 
 function FooterNavigate() {
   return (
-    <div className="grid gap-6">
+    <div className="grid gap-6 xl:flex">
       <div className="grid gap-4">
         <h2 className="text-[25px] font-integral font-semibold">F'Boutique</h2>
         <p>
@@ -39,7 +39,7 @@ function FooterNavigate() {
         </ul>
       </div>
 
-      <ul className="grid grid-cols-2 gap-6">
+      <ul className="grid grid-cols-2 gap-6 xl:flex xl:gap-25 xl:text-nowrap">
         <li>
           <h3 className="text-sm font-medium mb-3">Company</h3>
           <ul className="grid gap-2 text-gray-500">

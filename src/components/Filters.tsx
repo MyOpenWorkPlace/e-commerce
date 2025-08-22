@@ -53,8 +53,6 @@ function Filters() {
     }
   }, [searchParams]);
 
-  console.log(searchParams.getAll("brand"));
-
   return (
     <>
       <div className="my-4  flex justify-between">
