@@ -1,6 +1,6 @@
 import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Link } from "react-router";
-import icon from "../../public/icon.png";
+import icon from "../assets/images/icon.png";
 
 function SidebarNav({ setState }: { setState: Function }) {
   return (
