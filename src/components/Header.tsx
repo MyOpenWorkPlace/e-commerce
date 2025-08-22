@@ -29,7 +29,7 @@ function Header() {
             initial={{ x: -300 }}
             animate={{ x: 0 }}
             exit={{ x: -300 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.4 }}
           >
             <SidebarNav setState={setSidebarState} />
           </motion.div>

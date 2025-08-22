@@ -1,8 +1,13 @@
 import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Link } from "react-router";
 import icon from "../assets/images/icon.png";
+import { useEffect } from "react";
 
 function SidebarNav({ setState }: { setState: Function }) {
+  useEffect(() => {
+    document.body.classList.add("overflow-hidden");
+    return () => document.body.classList.remove("overflow-hidden");
+  }, []);
   return (
     <div className="absolute left-0 top-0">
       <div

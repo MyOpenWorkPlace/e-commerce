@@ -1,14 +1,19 @@
 import Filters from "../components/Filters";
+import Pagination from "../components/Pagination";
 import { useAppSelector } from "../redux/reduxHooks/reduxHooks";
 
 function Shop() {
   const { list } = useAppSelector((store) => store.clothes);
+  const { filteredItems } = useAppSelector((store) => store.filteredItems);
 
   return (
     <main>
-      <div className="my-5 text-gray-600 ">{`Home > Shop`}</div>
-      <section className="pt-7 ">
-        <Filters itemsPerPage={6} items={list} />
+      <section className="relative">
+        <Filters />
+        <Pagination
+          itemsPerPage={6}
+          items={(filteredItems[0] && filteredItems) || list}
+        />
       </section>
     </main>
   );
