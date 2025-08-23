@@ -12,7 +12,7 @@ function Cart() {
   const cartItems = activeUser && activeUser!.cart;
 
   return (
-    <main className="p-4 pt-0 xl:px-20">
+    <main className="p-4 xl:px-20">
       <CompactToastContainer />
       {(cartItems &&
         ((cartItems[0] && (

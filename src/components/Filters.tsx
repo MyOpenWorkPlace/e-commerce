@@ -10,9 +10,8 @@ import { toast } from "react-toastify";
 function Filters() {
   const [filtersState, setFiltersState] = useState(false);
   const { list } = useAppSelector((store) => store.clothes);
-  const dispatch = useAppDispatch();
-
   const [searchParams] = useSearchParams();
+  const dispatch = useAppDispatch();
 
   const filteredArr = list
     .filter((el) => {
