@@ -8,12 +8,20 @@ function Shop() {
 
   return (
     <main>
-      <section className="relative">
+      <section className="relative xl:flex xl:gap-5 xl:px-20">
         <Filters />
-        <Pagination
-          itemsPerPage={6}
-          items={(filteredItems[0] && filteredItems) || list}
-        />
+        <div className="xl:hidden">
+          <Pagination
+            itemsPerPage={6}
+            items={(filteredItems[0] && filteredItems) || list}
+          />
+        </div>
+        <div className="hidden xl:block">
+          <Pagination
+            itemsPerPage={9}
+            items={(filteredItems[0] && filteredItems) || list}
+          />
+        </div>
       </section>
     </main>
   );

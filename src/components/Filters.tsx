@@ -54,11 +54,11 @@ function Filters() {
   }, [searchParams]);
 
   return (
-    <>
-      <div className="my-4  flex justify-between">
+    <div className="flex-1">
+      <div className="my-4  flex justify-between  xl:px-0">
         <p className="text-gray-600">{`Home > Shop`}</p>
         <button
-          className="p-2 bg-gray-200 rounded-full flex mr-2"
+          className="p-2 bg-gray-200 rounded-full flex mr-2 xl:hidden"
           onClick={() => {
             setFiltersState(true);
           }}
@@ -67,30 +67,35 @@ function Filters() {
         </button>
       </div>
 
-      <AnimatePresence>
-        {filtersState && (
-          <>
-            <motion.div
-              className="fixed inset-0 bg-black/50 z-40"
-              onClick={() => setFiltersState(false)}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-            />
+      <div className="xl:hidden">
+        <AnimatePresence>
+          {filtersState && (
+            <>
+              <motion.div
+                className="fixed inset-0 bg-black/50 z-40"
+                onClick={() => setFiltersState(false)}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+              />
 
-            <motion.div
-              className="absolute bg-white z-100 bottom-20 w-full h-[100vh] rounded-2xl"
-              initial={{ y: "100%" }}
-              animate={{ y: 0 }}
-              exit={{ y: "100%" }}
-              transition={{ duration: 0.5 }}
-            >
-              <FiltersOptions setFiltersState={setFiltersState} />
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
-    </>
+              <motion.div
+                className="absolute bg-white z-100 -top-6 w-full h-[880px] rounded-2xl"
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
+                exit={{ y: "100%" }}
+                transition={{ duration: 0.5 }}
+              >
+                <FiltersOptions resp="mob" setFiltersState={setFiltersState} />
+              </motion.div>
+            </>
+          )}
+        </AnimatePresence>
+      </div>
+      <div className="hidden xl:block">
+        <FiltersOptions setFiltersState={setFiltersState} resp="desk" />
+      </div>
+    </div>
   );
 }
 

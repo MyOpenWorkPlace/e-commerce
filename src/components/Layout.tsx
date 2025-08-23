@@ -18,7 +18,7 @@ function Layout() {
   }, [dispatch]);
 
   return (
-    <div className="w-[390px] mx-auto my-0 font-satoshi grid xl:w-[1240px]">
+    <div className="w-[390px] min-h-dvh mx-auto my-0 font-satoshi grid xl:w-[1240px] overflow-x-hidden content-between">
       {(loading && <Loader />) || (
         <>
           <Header />

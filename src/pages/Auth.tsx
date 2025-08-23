@@ -21,7 +21,7 @@ export default function Auth() {
   return (
     <main>
       {!user && (
-        <section className="grid justify-center p-4 grid-cols-1">
+        <section className="grid justify-center p-4 grid-cols-1 xl:justify-items-center">
           <div className="flex gap-5 justify-center ">
             <NavLink className={activeLink} to="logIn">
               Log In
@@ -34,7 +34,7 @@ export default function Auth() {
         </section>
       )}
       {user && (
-        <section className="grid justify-center gap-4 p-4 text-2xl border-b-gray-200 border-b-2">
+        <section className="grid justify-center gap-4 p-4 text-2xl border-b-gray-200 border-b-2 xl:justify-self-center">
           <span className="">User Mail : {user.email}</span>
 
           <button

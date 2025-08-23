@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useAppSelector } from "../redux/reduxHooks/reduxHooks";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa6";
 
@@ -7,6 +7,10 @@ import { Rating } from "react-simple-star-rating";
 function TopReviews() {
   const { list } = useAppSelector((store) => store.clothes);
   const containerRef = useRef<HTMLUListElement>(null);
+
+  useEffect(() => {
+    containerRef.current!.scrollTo({ left: 406 });
+  }, []);
 
   const reviewsArr = [...list]
     .sort(() => Math.random() - 0.5)

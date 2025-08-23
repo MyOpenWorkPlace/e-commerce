@@ -27,71 +27,71 @@ function ClothInfo() {
 
   const activeLink = ({ isActive }: { isActive: boolean }) =>
     isActive
-      ? "text-black font-bold  border-b-1 border-black"
-      : "text-gray-700 font-bold";
+      ? "text-black xl:px-10 font-bold  border-b-1 border-black"
+      : "text-gray-700  xl:px-10  font-bold";
 
   useEffect(() => {
     navigate("details");
   }, []);
 
   return (
-    <main className="px-4 ">
+    <main className="px-4 xl:px-20">
       <CompactToastContainer />
       <div className="my-5 text-gray-600 ">{`Home > Shop > ${
         cloth!.category.charAt(0).toUpperCase() +
         cloth!.category.slice(1).replace(/-/g, " ")
       }`}</div>
-      <div>
-        <div className="hidden xl:block">
-          <Gallery items={imgsForGallery} position="left" />
+      <div className="xl:flex xl:gap-10 xl:mb-10">
+        <div>
+          <div className="hidden xl:block">
+            <Gallery items={imgsForGallery} position="left" />
+          </div>
+          <div className="sm:block xl:hidden">
+            <Gallery items={imgsForGallery} position="bottom" />
+          </div>
         </div>
-        <div className="sm:block xl:hidden">
-          <Gallery items={imgsForGallery} position="bottom" />
+        <div className="grid content-between">
+          <div className="grid gap-3 border-b-1 border-gray-200 xl:border-0 pb-5">
+            <h3 className="font-semibold text-2xl xl:text-5xl">{title}</h3>
+            <div className="flex gap-3 items-center">
+              <Rating allowFraction initialValue={+rating} size={30} />
+              <p className="xl:text-xl">{rating} / 5</p>
+            </div>
+            <p className="font-semibold text-2xl">${price}</p>
+            <p className="text-sm text-gray-500">{description}</p>
+          </div>
+          <div className="flex justify-between gap-3 pt-6 pb-12 xl:p-0">
+            <div className="flex px-4 py-3 bg-gray-100 gap-4 rounded-full xl:text-xl">
+              <button
+                onClick={() => {
+                  setAmount((num) => Math.max(1, num - 1));
+                }}
+              >
+                <FaMinus />
+              </button>
+              <div>{amount}</div>
+              <button
+                onClick={() => {
+                  setAmount((num) => num + 1);
+                }}
+              >
+                <FaPlus />
+              </button>
+            </div>
+            <button
+              onClick={() => {
+                if (activeUser) {
+                  dispatch(addToCart({ ...cloth, amount: amount }));
+                } else {
+                  toast("You must Log In account");
+                }
+              }}
+              className="flex-1 text-white bg-black rounded-full"
+            >
+              Add to Cart
+            </button>
+          </div>
         </div>
-      </div>
-      <div className="grid gap-3 border-b-1 border-gray-200 pb-5 ">
-        <h3 className="font-semibold text-2xl">{title}</h3>
-        <div className="flex gap-3">
-          <Rating allowFraction initialValue={+rating} size={20} />
-          <p>{rating} / 5</p>
-        </div>
-        <p className="font-semibold text-2xl">${price}</p>
-        <p className="text-sm text-gray-500">{description}</p>
-      </div>
-
-      <div className="flex justify-between gap-3 pt-6 pb-12">
-        <div className="flex px-4 py-3 bg-gray-100 gap-4 rounded-full ">
-          <button
-            onClick={() => {
-              setAmount((num) => Math.max(1, num - 1));
-            }}
-          >
-            <FaMinus />
-          </button>
-
-          <div>{amount}</div>
-
-          <button
-            onClick={() => {
-              setAmount((num) => num + 1);
-            }}
-          >
-            <FaPlus />
-          </button>
-        </div>
-
-        <button
-          onClick={() => {
-            if (activeUser) {
-              dispatch(addToCart({ ...cloth, amount: amount }));
-            } else {
-              toast("You must Log In account");
-            }
-          }}
-          className="flex-1 text-white bg-black rounded-full"
-        >
-          Add to Cart
-        </button>
       </div>
       <div className="flex justify-center gap-10 border-b-1 border-gray-300">
         <NavLink className={activeLink} to="details">
@@ -101,7 +101,9 @@ function ClothInfo() {
           Rating & Reviews
         </NavLink>
       </div>
-      <Outlet />
+      <div className="xl:flex justify-center">
+        <Outlet />
+      </div>
     </main>
   );
 }

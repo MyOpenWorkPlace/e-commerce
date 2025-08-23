@@ -7,10 +7,20 @@ interface Props {
   position: "bottom" | "top" | "right" | "left";
 }
 
+const renderThumbInner = (item: ReactImageGalleryItem) => {
+  return (
+    <div className="flex  items-center justify-between rounded-xl">
+      <img src={item.original} className=" bg-gray-100 rounded-xl " />
+    </div>
+  );
+};
 const renderItem = (item: ReactImageGalleryItem) => {
   return (
-    <div className="flex items-center justify-between rounded-xl">
-      <img src={item.original} className=" bg-gray-100 rounded-xl" />
+    <div className="flex  items-center justify-between rounded-xl">
+      <img
+        src={item.original}
+        className=" bg-gray-100 rounded-xl xl:h-[420px] xl:w-[950px]"
+      />
     </div>
   );
 };
@@ -23,7 +33,7 @@ function Gallery({ items, position }: Props) {
       showPlayButton={false}
       showFullscreenButton={false}
       thumbnailPosition={position}
-      renderThumbInner={renderItem}
+      renderThumbInner={renderThumbInner}
       renderItem={renderItem}
     />
   );

@@ -3,15 +3,16 @@ import { useSearchParams } from "react-router";
 import { useAppSelector } from "../redux/reduxHooks/reduxHooks";
 import { useEffect } from "react";
 import FilterList from "./FilterList";
-import CompactToastContainer from "./CompactToastContainer";
-import { toast } from "react-toastify";
 
-function FiltersOptions({ setFiltersState }: { setFiltersState: Function }) {
+function FiltersOptions({
+  setFiltersState,
+  resp,
+}: {
+  setFiltersState: Function;
+  resp: string;
+}) {
   const [searchParams, setSearchParams] = useSearchParams();
   const { list } = useAppSelector((store) => store.clothes);
-  const filteredArr = useAppSelector(
-    (store) => store.filteredItems.filteredItems
-  );
 
   const setParams = (params: {
     category: string[];
@@ -50,10 +51,12 @@ function FiltersOptions({ setFiltersState }: { setFiltersState: Function }) {
     ),
   ];
 
-  useEffect(() => {
-    document.body.classList.add("overflow-hidden");
-    return () => document.body.classList.remove("overflow-hidden");
-  }, []);
+  if (resp === "mob") {
+    useEffect(() => {
+      document.body.classList.add("overflow-hidden");
+      return () => document.body.classList.remove("overflow-hidden");
+    }, []);
+  }
 
   return (
     <Formik
@@ -63,15 +66,20 @@ function FiltersOptions({ setFiltersState }: { setFiltersState: Function }) {
         maxPrice: "",
         minPrice: "",
       }}
-      onSubmit={(values) => {
-        setParams(values);
+      onSubmit={(values, { resetForm }) => {
         setFiltersState(false);
+        setParams(values);
+        resetForm();
       }}
     >
       <Form className="rounded-2xl p-5 border-1 border-gray-300 h-full flex flex-col">
         <div className="flex justify-between border-b-1 border-gray-300 pb-1">
           <h3 className="text-xl font-semibold">Category</h3>
-          <button type="button" onClick={() => setFiltersState(false)}>
+          <button
+            className="xl:hidden"
+            type="button"
+            onClick={() => setFiltersState(false)}
+          >
             X
           </button>
         </div>

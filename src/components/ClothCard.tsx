@@ -14,7 +14,7 @@ function ClothCard({ cloth: { id, thumbnail, title, rating, price } }: Props) {
       onClick={() => {
         navigate(`/shop/${id}`);
       }}
-      className="grid gap-2 xl:max-w-1/4 w-[180px] xl:w-[300px] shrink-0  justify-self-center"
+      className="grid gap-2 w-[180px] xl:w-[250px] shrink-0  justify-self-center"
     >
       <div>
         <img className="bg-gray-100 rounded-3xl" src={thumbnail} />

@@ -12,45 +12,49 @@ function Cart() {
   const cartItems = activeUser && activeUser!.cart;
 
   return (
-    <main className="p-4 pt-0">
+    <main className="p-4 pt-0 xl:px-20">
       <CompactToastContainer />
-      <div className="my-5 text-gray-600 ">{`Home > Cart`}</div>
       {(cartItems &&
         ((cartItems[0] && (
-          <section className="">
+          <section>
+            <div className="my-5 text-gray-600 ">{`Home > Cart`}</div>
             <h2 className="text-3xl font-semibold mb-5">YOUR CART</h2>
-            <CartList />
-            <div className="grid gap-4 border-1 border-gray-300  p-5  rounded-2xl">
-              <h3 className="text-xl font-semibold border-b-1 border-gray-300 pb-3">
-                Order Summary
-              </h3>
-              <div className="flex justify-between">
-                <p className="font-normal text-gray-500">Total</p>
-                <p className="text-base font-semibold">
-                  {Math.floor(
-                    cartItems.reduce(
-                      (acc, { price, amount }) => acc + +price * amount!,
-                      0
-                    )
-                  )}
-                  $
-                </p>
+            <div className="xl:grid xl:grid-cols-[2fr_1fr] xl: xl:gap-10">
+              <CartList />
+              <div>
+                <div className="grid gap-4 border-1 border-gray-300  p-5  rounded-2xl">
+                  <h3 className="text-xl font-semibold border-b-1 border-gray-300 pb-3">
+                    Order Summary
+                  </h3>
+                  <div className="flex justify-between">
+                    <p className="font-normal text-gray-500">Total</p>
+                    <p className="text-base font-semibold">
+                      {Math.floor(
+                        cartItems.reduce(
+                          (acc, { price, amount }) => acc + +price * amount!,
+                          0
+                        )
+                      )}
+                      $
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => {
+                      toast("Thanks for shopping !");
+                      dispatch(clearCart());
+                    }}
+                    className="p-3 text-center flex-1  bg-black text-white rounded-full"
+                  >
+                    Buy
+                  </button>
+                </div>
               </div>
-              <button
-                onClick={() => {
-                  toast("Thanks for shopping !");
-                  dispatch(clearCart());
-                }}
-                className="p-3 text-center flex-1  bg-black text-white rounded-full"
-              >
-                Buy
-              </button>
             </div>
           </section>
         )) || (
           <div className="text-center text-2xl font-bold">Cart Is Empty</div>
         ))) || (
-        <div className="grid gap-4 justify-center border-1 border-gray-400 p-3 rounded-2xl">
+        <div className="grid gap-4 justify-center border-1 border-gray-400 p-3 rounded-2xl xl:justify-self-center xl:p-6 xl:text-2xl">
           <p>You must Log In</p>
           <button
             className="bg-black text-white p-2 rounded-2xl"

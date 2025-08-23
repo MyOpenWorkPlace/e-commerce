@@ -22,14 +22,17 @@ function Search({ searchState: { searchState, setSearchState } }: Props) {
         <>
           <motion.div
             className="fixed inset-0 bg-black/50 z-40"
-            onClick={() => setSearchState(false)}
+            onClick={() => {
+              setSearchState(false);
+              setSearchArr([]);
+            }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           />
 
           <motion.div
-            className="absolute z-100 w-full rounded-2xl bg-gray-200 p-3 top-4 left-1/2 -translate-x-1/2 "
+            className="absolute z-100 w-full rounded-2xl bg-gray-200 p-3 top-2 left-1/2 -translate-x-1/2 xl:w-[50%]"
             initial={{ y: "100%" }}
             animate={{ y: 0 }}
             exit={{ y: "100%" }}
@@ -46,13 +49,14 @@ function Search({ searchState: { searchState, setSearchState } }: Props) {
                   setSearchArr([]);
                 }
               }}
-              className="w-full border-1 p-2 rounded-xl"
+              className="w-full border-1 p-2 rounded-xl outline-0"
               type="text"
             />
             {searchArr[0] && (
               <ul className="overflow-y-scroll mt-2 max-h-[200px]">
                 {searchArr.map((el) => (
                   <li
+                    className="flex items-center"
                     key={el.id}
                     onClick={() => {
                       navigate(`/shop/${el.id}/details`);
@@ -60,7 +64,7 @@ function Search({ searchState: { searchState, setSearchState } }: Props) {
                       setSearchArr([]);
                     }}
                   >
-                    <img className="w-15" src={el.thumbnail} alt="" />
+                    <img className="w-20" src={el.thumbnail} alt="" />
                     {el.title}
                   </li>
                 ))}
